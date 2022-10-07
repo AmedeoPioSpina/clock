@@ -1,17 +1,32 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { useState } from 'react';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+const Clock = () =>{
+    const [time, timeCounter] = React.useState(new Date());
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+    setInterval(() => {
+        timeCounter(new Date())
+    }, 1000);
+
+    return (
+        <div className='clock'>
+                 {time.toLocaleTimeString()}
+            </div>
+    );
+}
+// class Orologio extends React.Component{
+//     constructor(start) {
+//         this.start = 0;
+//     }
+
+//     render(){
+//         return (
+//             runningTime()
+//         );
+//     }
+// }
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<Clock />);
